@@ -8,13 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
+          
       - uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.13.0' # تثبيت الإصدار لمنع تعارض السيرفر
           channel: 'stable'
+          
       - run: |
           flutter pub get
           flutter build apk --release
